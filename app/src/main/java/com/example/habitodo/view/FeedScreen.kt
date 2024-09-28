@@ -33,15 +33,15 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.habitodo.R
+import com.example.habitodo.component.AddGoalDialog
 import com.example.habitodo.component.GoalList
 import com.example.habitodo.component.LottieButton
 import com.example.habitodo.viewmodel.FeedViewModel
 
-
 @Composable
 fun FeedScreen(viewModel: FeedViewModel = viewModel()) {
     val goalList by viewModel.goalList.observeAsState(emptyList())
-    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.habitodo_logo))
+    val showDialog by viewModel.showAddGoalDialog.observeAsState(false)
 
     Column {
         Row(
@@ -56,17 +56,12 @@ fun FeedScreen(viewModel: FeedViewModel = viewModel()) {
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
-            LottieAnimation(
-                composition = composition,
-                iterations = LottieConstants.IterateForever,
-                speed = 0.6f,
-                modifier = Modifier.size(50.dp)
-            )
+            // Add your Lottie animation or other UI elements here
         }
 
-        // Use LazyColumn to display the list of goals
+        // Display goals
         LazyColumn(
-            modifier = Modifier.weight(1f) // This allows the list to take available space
+            modifier = Modifier.weight(1f)
         ) {
             items(goalList) { goal ->
                 GoalList(goals = listOf(goal)) { clickedGoal ->
@@ -75,11 +70,22 @@ fun FeedScreen(viewModel: FeedViewModel = viewModel()) {
             }
         }
     }
+    // Show the AddGoalButton
     AddGoalButton(onClick = {
-        // Show a toast message when the button is clicked
         viewModel.onAddGoalClicked()
     })
+
+    // Show the Add Goal Dialog if triggered
+    if (showDialog) {
+        AddGoalDialog(
+            onDismiss = { viewModel.dismissDialog() },
+            onConfirm = { goalName, goalDescription ->
+                viewModel.addGoal(goalName, goalDescription)
+            }
+        )
+    }
 }
+
 
 @Composable
 fun AddGoalButton(onClick: () -> Unit) {

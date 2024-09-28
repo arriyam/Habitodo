@@ -13,9 +13,10 @@ class FeedViewModel : ViewModel() {
     // Mock data for the list of goals
     private val _goalList = MutableLiveData<List<Goal>>()
     val goalList: LiveData<List<Goal>> = _goalList
-
-    // State for clicked goal title
     val clickedGoalTitle = mutableStateOf("")
+
+    private val _showAddGoalDialog= MutableLiveData(false)
+    val showAddGoalDialog: LiveData<Boolean> = _showAddGoalDialog
 
     init {
         // Mock a flat list of goals
@@ -35,10 +36,21 @@ class FeedViewModel : ViewModel() {
         // Here you could also trigger navigation or any other logic
     }
 
-    // Define the method to handle the click logic for adding a goal
+    // Method to trigger the dialog
     fun onAddGoalClicked() {
-        // Perform any necessary logic, such as showing a log or interacting with a repository
         Log.d("FeedViewModel", "Add Goal Clicked")
+        _showAddGoalDialog.value = true
+    }
 
+    // Method to hide dialog
+    fun dismissDialog() {
+        _showAddGoalDialog.value = false
+    }
+
+    // Logic to handle the confirmed goal input
+    fun addGoal(goalName: String, goalDescription: String) {
+        // Add logic here (e.g., adding to a list or repository)
+        Log.d("FeedViewModel", "Goal Added: $goalName, Description: $goalDescription")
+        dismissDialog()
     }
 }
