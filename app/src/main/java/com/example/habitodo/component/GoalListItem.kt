@@ -1,11 +1,7 @@
 package com.example.habitodo.component
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -13,24 +9,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.habitodo.Model.Goal
+import com.example.habitodo.model.Goal
 
 @Composable
-fun GoalCarousel(goals: List<Goal>) {
-    LazyRow {
-        items(goals.size) { index ->
-            val goal = goals[index]
-            GoalItem(goal = goal)
-        }
-    }
-}
-
-@Composable
-fun GoalItem(goal: Goal) {
+fun GoalListItem(goal: Goal, onGoalClick: (Goal) -> Unit) {
     Card(
         modifier = Modifier
-            .padding(8.dp)
-            .size(200.dp),
+            .padding(10.dp)
+            .fillMaxWidth() // Take full width for vertical list
+            .clickable(onClick = { onGoalClick(goal) }), // Add click listener
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Column(
@@ -44,5 +31,3 @@ fun GoalItem(goal: Goal) {
         }
     }
 }
-
-

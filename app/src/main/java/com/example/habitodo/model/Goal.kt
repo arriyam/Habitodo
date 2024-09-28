@@ -1,4 +1,4 @@
-package com.example.habitodo.Model
+package com.example.habitodo.model
 
 class Goal(
     val title: String,

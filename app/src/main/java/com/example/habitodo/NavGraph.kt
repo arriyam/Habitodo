@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.habitodo.View.FeedScreen
-import com.example.habitodo.View.HomeScreen
+import com.example.habitodo.view.FeedScreen
+import com.example.habitodo.view.HomeScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {

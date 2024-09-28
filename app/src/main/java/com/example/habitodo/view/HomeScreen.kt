@@ -1,4 +1,4 @@
-package com.example.habitodo.View
+package com.example.habitodo.view
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

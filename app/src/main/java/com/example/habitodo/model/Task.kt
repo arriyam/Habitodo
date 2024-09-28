@@ -1,4 +1,4 @@
-package com.example.habitodo.Model
+package com.example.habitodo.model
 
 data class Task(
     val description: String,
