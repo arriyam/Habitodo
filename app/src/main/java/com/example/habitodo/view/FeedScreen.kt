@@ -84,7 +84,7 @@ fun FeedScreen(viewModel: FeedViewModel = viewModel()) {
 @Composable
 fun AddGoalButton(onClick: () -> Unit) {
     // Pass the Lottie resource to the generic LottieButton
-    LottieButton(lottieRes = R.raw.add_button, 80.dp, 8.dp, 75.dp, onClick = onClick)
+    LottieButton(lottieRes = R.raw.add_button, 80.dp, 8.dp, 75.dp, LottieConstants.IterateForever, 1.5f,  onClick = onClick)
 }
 
 

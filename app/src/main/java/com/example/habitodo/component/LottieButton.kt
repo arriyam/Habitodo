@@ -24,6 +24,8 @@ fun LottieButton(
     boxSize: Dp,
     padding: Dp,
     lottieSize : Dp,
+    iterations: Int,
+    speed: Float,
     onClick: () -> Unit
 ) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(lottieRes)) // replace with your Lottie animation resource
@@ -47,7 +49,8 @@ fun LottieButton(
         ) {
             LottieAnimation(
                 composition = composition,
-                iterations = LottieConstants.IterateForever,
+                iterations = iterations,
+                speed = speed,
                 modifier = Modifier.size(lottieSize) // Adjust the size of the Lottie animation
             )
         }
