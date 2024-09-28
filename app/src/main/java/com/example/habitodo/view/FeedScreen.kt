@@ -77,7 +77,7 @@ fun FeedScreen(viewModel: FeedViewModel = viewModel()) {
     }
     AddGoalButton(onClick = {
         // Show a toast message when the button is clicked
-        Log.d("FeedScreen", "Add Goal Clicked")
+        viewModel.onAddGoalClicked()
     })
 }
 
