@@ -34,6 +34,7 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.habitodo.R
 import com.example.habitodo.component.GoalList
+import com.example.habitodo.component.LottieButton
 import com.example.habitodo.viewmodel.FeedViewModel
 
 
@@ -74,7 +75,6 @@ fun FeedScreen(viewModel: FeedViewModel = viewModel()) {
             }
         }
     }
-
     AddGoalButton(onClick = {
         // Show a toast message when the button is clicked
         Log.d("FeedScreen", "Add Goal Clicked")
@@ -83,32 +83,8 @@ fun FeedScreen(viewModel: FeedViewModel = viewModel()) {
 
 @Composable
 fun AddGoalButton(onClick: () -> Unit) {
-    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.add_button)) // replace with your Lottie animation resource
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        contentAlignment = Alignment.BottomEnd // Align to the bottom end of the box
-    ) {
-        // Use Box to make the Lottie animation clickable without feedback
-        Box(
-            modifier = Modifier
-                .size(80.dp) // Adjust size for your button
-                .clickable(
-                    onClick = onClick, // Handle the click
-                    indication = null, // Disable the click feedback
-                    interactionSource = remember { MutableInteractionSource() } // Required when indication is null
-                )
-                .padding(8.dp) // Optional: add some padding around the Lottie animation
-        ) {
-            LottieAnimation(
-                composition = composition,
-                iterations = LottieConstants.IterateForever,
-                modifier = Modifier.size(75.dp) // Adjust the size of the Lottie animation
-            )
-        }
-    }
+    // Pass the Lottie resource to the generic LottieButton
+    LottieButton(lottieRes = R.raw.add_button, onClick = onClick)
 }
 
 
