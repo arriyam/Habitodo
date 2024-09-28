@@ -2,4 +2,15 @@
 <resources>
 
     <style name="Theme.Habitodo" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
+        <!-- Optional: Set background color -->
+        <item name="windowSplashScreenBackground">@color/white</item>
+
+        <!-- Optional: Set the app icon as the splash screen icon -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+
+        <!-- Optional: Control the exit animation -->
+        <item name="windowSplashScreenAnimationDuration">0</item> <!-- Make this really fast -->
+    </style>
 </resources>

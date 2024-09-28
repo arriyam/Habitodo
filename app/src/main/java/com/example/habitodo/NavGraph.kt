@@ -7,10 +7,7 @@ import androidx.navigation.compose.composable
 
 @Composable
 fun NavGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "splash_screen") {
-        composable("splash_screen") {
-            SplashScreenView(navController = navController)
-        }
+    NavHost(navController = navController, startDestination = "home_screen") {
         composable("home_screen") {
             HomeScreen()
         }
