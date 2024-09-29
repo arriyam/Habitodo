@@ -33,6 +33,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.habitodo.R
+import com.example.habitodo.component.AddGoalButton
 import com.example.habitodo.component.AddGoalDialog
 import com.example.habitodo.component.GoalList
 import com.example.habitodo.component.LottieButton
@@ -90,13 +91,6 @@ fun FeedScreen(viewModel: FeedViewModel = viewModel()) {
             }
         )
     }
-}
-
-
-@Composable
-fun AddGoalButton(onClick: () -> Unit) {
-    // Pass the Lottie resource to the generic LottieButton
-    LottieButton(lottieRes = R.raw.add_button, 80.dp, 8.dp, 75.dp, LottieConstants.IterateForever, 1.5f,  onClick = onClick)
 }
 
 
