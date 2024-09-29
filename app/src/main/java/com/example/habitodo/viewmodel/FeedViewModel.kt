@@ -38,6 +38,11 @@ class FeedViewModel : ViewModel() {
         _showAddGoalDialog.value = true
     }
 
+    fun onAddTaskClicked() {
+        Log.d("FeedViewModel", "Add Goal Clicked")
+        _showAddGoalDialog.value = true
+    }
+
     fun dismissDialog() {
         _showAddGoalDialog.value = false
     }
