@@ -6,7 +6,6 @@ class Goal(
     var isCompleted: Boolean = false, // Overall goal completion
     private var tasks: MutableList<Pair<Task, Boolean>> = mutableListOf() // Mutable list of Task and its completion status
 ) {
-
     // Add a task to the goal
     fun addTask(task: Task) {
         tasks.add(task to false) // Add the task with default completion status of false

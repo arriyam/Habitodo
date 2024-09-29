@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.habitodo.model.Goal
 import androidx.compose.runtime.mutableStateOf
+import androidx.navigation.NavHostController
 
 class FeedViewModel : ViewModel() {
     // Mock data for the list of goals
@@ -27,10 +28,9 @@ class FeedViewModel : ViewModel() {
         }
     }
 
-    fun onGoalClick(goal: Goal) {
-        // Update clicked goal title or perform any other action
-        clickedGoalTitle.value = "Clicked: ${goal.title}"
-        // Here you could also trigger navigation or any other logic
+    fun onGoalClick(goal: Goal, navController: NavHostController) {
+        // Navigate to GoalDetailsScreen with the goal title passed as an argument
+        navController.navigate("goal_details_screen/${goal.title}")
     }
 
     fun onAddGoalClicked() {
