@@ -6,8 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.habitodo.model.Goal
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
 
 class FeedViewModel : ViewModel() {
     // Mock data for the list of goals
@@ -29,28 +27,31 @@ class FeedViewModel : ViewModel() {
         }
     }
 
-    // Function to handle goal click action
     fun onGoalClick(goal: Goal) {
         // Update clicked goal title or perform any other action
         clickedGoalTitle.value = "Clicked: ${goal.title}"
         // Here you could also trigger navigation or any other logic
     }
 
-    // Method to trigger the dialog
     fun onAddGoalClicked() {
         Log.d("FeedViewModel", "Add Goal Clicked")
         _showAddGoalDialog.value = true
     }
 
-    // Method to hide dialog
     fun dismissDialog() {
         _showAddGoalDialog.value = false
     }
 
-    // Logic to handle the confirmed goal input
     fun addGoal(goalName: String, goalDescription: String) {
         // Add logic here (e.g., adding to a list or repository)
         Log.d("FeedViewModel", "Goal Added: $goalName, Description: $goalDescription")
+        _goalList.value = _goalList.value?.plus(
+            Goal(
+                title = goalName,
+                description = goalDescription,
+                isCompleted = false,
+            )
+        )
         dismissDialog()
     }
 }

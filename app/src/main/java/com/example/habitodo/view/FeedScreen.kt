@@ -42,6 +42,7 @@ import com.example.habitodo.viewmodel.FeedViewModel
 fun FeedScreen(viewModel: FeedViewModel = viewModel()) {
     val goalList by viewModel.goalList.observeAsState(emptyList())
     val showDialog by viewModel.showAddGoalDialog.observeAsState(false)
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.habitodo_logo))
 
     Column {
         Row(
@@ -56,7 +57,12 @@ fun FeedScreen(viewModel: FeedViewModel = viewModel()) {
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
-            // Add your Lottie animation or other UI elements here
+            LottieAnimation(
+                composition = composition,
+                iterations = LottieConstants.IterateForever,
+                speed = 0.6f,
+                modifier = Modifier.size(50.dp)
+            )
         }
 
         // Display goals
