@@ -34,7 +34,6 @@ import com.example.habitodo.viewmodel.FeedViewModel
 fun FeedScreen(
     viewModel: FeedViewModel = viewModel(),
     navController: NavHostController,
-    feedViewModel: FeedViewModel
 ) {
     val goalList by viewModel.goalList.observeAsState(emptyList())
     val showDialog by viewModel.showAddGoalDialog.observeAsState(false)

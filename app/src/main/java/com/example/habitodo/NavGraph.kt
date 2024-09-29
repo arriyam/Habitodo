@@ -17,7 +17,7 @@ fun NavGraph(
     NavHost(navController = navController, startDestination = "feed_screen") {
         // Feed Screen
         composable("feed_screen") {
-            FeedScreen(navController = navController, feedViewModel = feedViewModel)
+            FeedScreen(navController = navController, viewModel = feedViewModel)
         }
 
         // Goal Details Screen with title as argument
@@ -29,7 +29,7 @@ fun NavGraph(
             val goal = feedViewModel.goalList.value?.find { it.title == goalTitle } // Retrieve Goal by title
 
             goal?.let {
-                GoalDetailsScreen(goal = it) // Pass the Goal object to the details screen
+                GoalDetailsScreen(goal = it,feedViewModel) // Pass the Goal object to the details screen
             }
         }
     }
